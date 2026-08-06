@@ -63,4 +63,13 @@ service cloud.firestore {
       allow read, write: if false;
     }
   }
+
+  match /notes/{noteId} {
+    allow read:   if isAuthenticated() && isOwner(resource.data.uid);
+    allow create: if isAuthenticated() && isOwner(request.resource.data.uid);
+    allow update: if isAuthenticated() && isOwner(resource.data.uid)
+                  && request.resource.data.uid == resource.data.uid;
+    allow delete: if false;  // soft-delete only — set deletedAt instead
+  }
+
 }
