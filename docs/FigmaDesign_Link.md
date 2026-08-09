@@ -1,1 +1,1 @@
-https://github.com/emeralddd/capstone-boilerplate.git
+https://www.figma.com/design/JnkORkFEkRuspZS0keT8zl/Capstone?node-id=0-1&t=XG9H1VO4tKxsCIFS-1
