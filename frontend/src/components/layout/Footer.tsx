@@ -5,7 +5,7 @@ const githubLogo = '/assets/github.png'
 
 function LogoTile({ src, alt, link }: { src: string; alt: string; link: string }) {
     return (
-        <div className="flex h-[152px] w-[152px] items-center justify-center rounded-[10px] border-2 border-[#ced1d8] bg-[#f7f9fd] p-2.5">
+        <div className="flex h-38 w-38 items-center justify-center rounded-[10px] border-2 border-[#ced1d8] bg-[#f7f9fd] p-2.5">
             <a
                 href={link}
                 target="_blank"
@@ -19,7 +19,7 @@ function LogoTile({ src, alt, link }: { src: string; alt: string; link: string }
 
 export function Footer() {
     return (
-        <div className="w-full border-t-2 border-[#244da3] bg-[#3d62b2] px-5 pt-15 pb-10 text-white">
+        <div className="w-full border-t-2 border-[#244da3] bg-[#3d62b2] px-5 pt-15 pb-10 font-fira-sans text-white">
             <div className="mx-auto flex w-full max-w-300 flex-col items-center gap-10">
                 <div className="flex w-full max-w-85 flex-wrap items-center justify-center gap-5">
                     <LogoTile src={partnerLogo2} alt="Partner logo 2" link="https://www.telstra.com.au/" />

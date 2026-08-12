@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Footer } from '@/components/layout/Footer'
-import { HeaderBig } from '@/components/layout/HeaderBig'
+import { HeaderBigLoggedOut } from '@/components/layout/HeaderBigLoggedOut'
 
 export const metadata: Metadata = {
   title: 'AI Workloads & Agentic Systems in muru-D',
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function LandingPage() {
   return (
-    <main className="flex min-h-screen flex-col justify-between bg-white">
-      <HeaderBig />
+    <main className="flex min-h-screen flex-col justify-between bg-white font-fira-sans">
+      <HeaderBigLoggedOut />
       <div className="flex flex-col items-center justify-center gap-8 py-12">
         <div className="space-y-4 px-8 text-center">
           <h1 className="text-4xl mx-auto font-bold tracking-tight text-zinc-900">

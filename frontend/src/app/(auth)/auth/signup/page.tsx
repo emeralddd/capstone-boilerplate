@@ -9,6 +9,7 @@ import { toast } from 'sonner'
 import { useAuth } from '@/hooks/useAuth'
 import { signupSchema, type SignupInput } from '@/lib/validations/auth'
 import { FullPageSpinner } from '@/components/shared/LoadingSpinner'
+import { TextField } from '@/components/auth/TextField'
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -53,16 +54,11 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-1 text-center">
-        <h1 className="text-2xl font-bold tracking-tight">Create account</h1>
-        <p className="text-sm text-zinc-500">Get started for free</p>
-      </div>
-
+    <div className="flex flex-col items-center gap-6 font-fira-sans">
       <button
         type="button"
         onClick={handleGoogleSignIn}
-        className="flex w-full items-center justify-center gap-3 rounded-md border border-zinc-300 bg-white px-4 py-2.5 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+        className="flex w-full max-w-182 items-center justify-center gap-3 rounded-[10px] border-2 border-[#ced1d8] bg-white px-4 py-2.5 text-sm font-medium text-[#1e1e1e] shadow-sm transition-colors hover:bg-zinc-50"
       >
         <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
           <path
@@ -85,115 +81,113 @@ export default function SignUpPage() {
         Continue with Google
       </button>
 
-      <div className="relative">
+      <div className="relative w-full max-w-182">
         <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t border-zinc-200 dark:border-zinc-700" />
+          <span className="w-full border-t border-[#ced1d8]" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-zinc-50 px-2 text-zinc-400 dark:bg-zinc-950">or</span>
+          <span className="bg-white px-2 text-zinc-400">or</span>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="space-y-1.5">
-          <label htmlFor="displayName" className="text-sm font-medium">
-            Name
-          </label>
-          <input
-            id="displayName"
-            type="text"
-            autoComplete="name"
-            aria-invalid={!!errors.displayName}
-            aria-describedby={errors.displayName ? 'display-name-error' : undefined}
-            className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-500 focus:outline-none aria-invalid:border-red-500 dark:border-zinc-700 dark:bg-zinc-900"
-            placeholder="Your full name"
-            {...register('displayName')}
-          />
-          {errors.displayName && (
-            <p id="display-name-error" className="text-xs text-red-500" role="alert">
-              {errors.displayName.message}
-            </p>
-          )}
-        </div>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex w-full max-w-182 flex-col gap-5 rounded-[10px] border-2 border-[#ced1d8] bg-[#f7f9fd] p-5"
+      >
+        <h2 className="text-[36px] font-bold text-[#222]">Create account</h2>
 
-        <div className="space-y-1.5">
-          <label htmlFor="email" className="text-sm font-medium">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            autoComplete="email"
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? 'email-error' : undefined}
-            className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-500 focus:outline-none aria-invalid:border-red-500 dark:border-zinc-700 dark:bg-zinc-900"
-            placeholder="you@example.com"
-            {...register('email')}
-          />
-          {errors.email && (
-            <p id="email-error" className="text-xs text-red-500" role="alert">
-              {errors.email.message}
-            </p>
-          )}
-        </div>
+        <div className="flex flex-col gap-3.75">
+          <div className="flex flex-col gap-2.5">
+            <label htmlFor="displayName" className="sr-only">
+              Name
+            </label>
+            <TextField
+              id="displayName"
+              type="text"
+              autoComplete="name"
+              placeholder="Name"
+              error={!!errors.displayName}
+              aria-invalid={!!errors.displayName}
+              aria-describedby={errors.displayName ? 'display-name-error' : undefined}
+              {...register('displayName')}
+            />
+            {errors.displayName && (
+              <p id="display-name-error" className="pl-1 text-xs text-[#ae2c39]" role="alert">
+                {errors.displayName.message}
+              </p>
+            )}
 
-        <div className="space-y-1.5">
-          <label htmlFor="password" className="text-sm font-medium">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            autoComplete="new-password"
-            aria-invalid={!!errors.password}
-            aria-describedby={errors.password ? 'password-error' : undefined}
-            className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-500 focus:outline-none aria-invalid:border-red-500 dark:border-zinc-700 dark:bg-zinc-900"
-            placeholder="Min. 8 characters, 1 uppercase, 1 number"
-            {...register('password')}
-          />
-          {errors.password && (
-            <p id="password-error" className="text-xs text-red-500" role="alert">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
+            <label htmlFor="email" className="sr-only">
+              Email
+            </label>
+            <TextField
+              id="email"
+              type="email"
+              autoComplete="email"
+              placeholder="Email"
+              error={!!errors.email}
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? 'email-error' : undefined}
+              {...register('email')}
+            />
+            {errors.email && (
+              <p id="email-error" className="pl-1 text-xs text-[#ae2c39]" role="alert">
+                {errors.email.message}
+              </p>
+            )}
 
-        <div className="space-y-1.5">
-          <label htmlFor="confirmPassword" className="text-sm font-medium">
-            Confirm password
-          </label>
-          <input
-            id="confirmPassword"
-            type="password"
-            autoComplete="new-password"
-            aria-invalid={!!errors.confirmPassword}
-            aria-describedby={errors.confirmPassword ? 'confirm-password-error' : undefined}
-            className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-500 focus:outline-none aria-invalid:border-red-500 dark:border-zinc-700 dark:bg-zinc-900"
-            placeholder="••••••••"
-            {...register('confirmPassword')}
-          />
-          {errors.confirmPassword && (
-            <p id="confirm-password-error" className="text-xs text-red-500" role="alert">
-              {errors.confirmPassword.message}
-            </p>
-          )}
-        </div>
+            <label htmlFor="password" className="sr-only">
+              Password
+            </label>
+            <TextField
+              id="password"
+              type="password"
+              autoComplete="new-password"
+              placeholder="Password"
+              error={!!errors.password}
+              aria-invalid={!!errors.password}
+              aria-describedby={errors.password ? 'password-error' : undefined}
+              {...register('password')}
+            />
+            {errors.password && (
+              <p id="password-error" className="pl-1 text-xs text-[#ae2c39]" role="alert">
+                {errors.password.message}
+              </p>
+            )}
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
-        >
-          {isSubmitting ? 'Creating account…' : 'Create account'}
-        </button>
+            <label htmlFor="confirmPassword" className="sr-only">
+              Confirm password
+            </label>
+            <TextField
+              id="confirmPassword"
+              type="password"
+              autoComplete="new-password"
+              placeholder="Confirm password"
+              error={!!errors.confirmPassword}
+              aria-invalid={!!errors.confirmPassword}
+              aria-describedby={errors.confirmPassword ? 'confirm-password-error' : undefined}
+              {...register('confirmPassword')}
+            />
+            {errors.confirmPassword && (
+              <p id="confirm-password-error" className="pl-1 text-xs text-[#ae2c39]" role="alert">
+                {errors.confirmPassword.message}
+              </p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="flex h-10 w-full items-center justify-center rounded-full bg-[#ffdd4a] text-base font-normal text-[#222] transition-colors hover:bg-[#f7d50a] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {isSubmitting ? 'Creating account…' : 'Create account'}
+          </button>
+        </div>
       </form>
 
       <p className="text-center text-sm text-zinc-500">
         Already have an account?{' '}
-        <Link
-          href="/auth/signin"
-          className="font-medium text-zinc-900 hover:underline dark:text-white"
-        >
+        <Link href="/auth/signin" className="font-medium text-[#244da3] hover:underline">
           Sign in
         </Link>
       </p>

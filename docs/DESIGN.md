@@ -61,8 +61,9 @@ Fonts are loaded via `next/font/google` in the root layout and exposed as CSS va
 
 | Variable | Font | Use |
 |----------|------|-----|
-| `--font-geist-sans` | Geist Sans | All body text, UI |
+| `--font-geist-sans` | Geist Sans | All body text, UI (dashboard, profile, settings) |
 | `--font-geist-mono` | Geist Mono | Code, monospace |
+| `--font-fira-sans` | Fira Sans | Marketing/auth surfaces built from Figma — apply the `font-fira-sans` utility class per-component (`HeaderBig`, `HeaderBigLoggedOut`, `Footer`, `TextField`, `LoginForm`) or on the page wrapper (landing page, `/auth/signin`, `/auth/signup`). Weights loaded: 400, 500, 700. |
 
 **Type scale:**
 
