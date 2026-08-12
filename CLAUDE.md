@@ -69,7 +69,8 @@ Everything a feature build needs already exists below. **Do not survey the codeb
 | `frontend/src/types/firestore.ts` | `UserProfile` — add new collection interfaces here (always with `_schemaVersion: 1`) | Collection types |
 | `frontend/src/lib/validations/` | `loginSchema`, `signupSchema`, `registerSchema`, `resetPasswordSchema` (`auth.ts`) · `idSchema`, `paginationSchema` (`common.ts`) | Zod schemas — add feature schemas here or in the feature folder |
 | `frontend/src/lib/utils.ts` | `cn()`, `formatDate`, `formatDatetime`, `truncate` | Class merging, formatting |
-| `frontend/src/components/layout/` | `DashboardShell`, `Sidebar` (navItems array — add links here), `Navbar`, `PageHeader` | App shell |
+| `frontend/src/components/layout/` | `HeaderBig` (authed chrome — Dashboard/Team nav + working logout, `'use client'`), `HeaderBigLoggedOut` (public chrome, logo only), `Footer`, `PageHeader` | Page chrome — used by `(auth)/layout.tsx` and `(dashboard)/layout.tsx` |
+| `frontend/src/components/auth/` | `TextField`, `LoginForm` (Figma-accurate login card, wired to `react-hook-form`) | Auth page form UI |
 | `frontend/src/components/shared/` | `ErrorBoundary`, `LoadingSpinner`, `FullPageSpinner`, `EmptyState { title, description?, icon?, action? }` | Loading/empty/error states |
 | `frontend/src/app/api/auth/session/route.ts` | POST (token → `__session` cookie), DELETE | Already wired — don't touch for features |
 
@@ -91,7 +92,7 @@ Everything a feature build needs already exists below. **Do not survey the codeb
 
 ### Existing routes/pages
 
-Pages: `/` · `/auth/signin` · `/auth/signup` · `/dashboard` · `/profile` · `/settings` (route groups `(auth)`, `(dashboard)`). Backend: `GET /api/health` (public); everything else under `/api` requires `Authorization: Bearer <ID token>`.
+Pages: `/` · `/auth/signin` · `/auth/signup` · `/dashboard` · `/team` (redirects to `/dashboard` — same content, per design) (route groups `(auth)`, `(dashboard)`). `/profile`, `/settings`, `/notes` still exist and work if visited directly, but nothing links to them — `HeaderBig`'s nav only has Dashboard/Team. `DashboardShell`/`Sidebar`/`Navbar` are unused leftovers from the old sidebar layout, kept but not wired into any route. Backend: `GET /api/health` (public); everything else under `/api` requires `Authorization: Bearer <ID token>`.
 
 ---
 
