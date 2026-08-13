@@ -30,7 +30,7 @@ const members = [
     avatarClass: 'bg-[#f2d6ce] text-[#1f2a40]',
   },
   {
-    name: 'Rhys Carrol',
+    name: 'Rhys Carroll',
     role: 'Developer',
     bio: "I'm Rhys Carroll, you can just call me Rhys, I'm one of the Developers. I have full intentions of seeing this course through to the end, will be nice meeting everyone else.",
     avatarClass: 'bg-[#dfe7f1] text-[#1e2f53]',
