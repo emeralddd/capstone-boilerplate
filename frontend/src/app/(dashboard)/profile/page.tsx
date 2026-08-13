@@ -11,7 +11,7 @@ export default async function ProfilePage() {
   return (
     <div className="max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Profile</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-zinc-800">Profile</h1>
         <p className="mt-1 text-sm text-zinc-500">Manage your account details.</p>
       </div>
 

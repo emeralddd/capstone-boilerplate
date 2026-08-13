@@ -14,6 +14,9 @@ const mobileNavLinkClasses =
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard' },
+  { href: '/profile', label: 'Profile' },
+  { href: '/settings', label: 'Settings' },
+  { href: '/notes', label: 'Notes' },
   { href: '/team', label: 'Team' },
 ]
 
