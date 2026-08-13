@@ -2,13 +2,18 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Footer } from '@/components/layout/Footer'
 import { HeaderBigLoggedOut } from '@/components/layout/HeaderBigLoggedOut'
+import { getServerSession } from '@/actions/auth.actions'
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'AI Workloads & Agentic Systems in muru-D',
   description: 'Welcome to the app',
 }
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const session = await getServerSession()
+    if (session) redirect('/dashboard')
+  
   return (
     <main className="flex min-h-screen flex-col justify-between bg-white font-fira-sans">
       <HeaderBigLoggedOut />
@@ -18,11 +23,7 @@ export default function LandingPage() {
             {process.env.NEXT_PUBLIC_APP_NAME ?? 'App'}
           </h1>
           <p className="max-w-md mx-auto text-lg text-zinc-600">
-            Your app description goes here. Edit{' '}
-            <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-sm text-zinc-900">
-              src/app/page.tsx
-            </code>{' '}
-            to get started.
+            Login to view my dashboard.
           </p>
         </div>
 
